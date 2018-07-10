@@ -7,54 +7,35 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
 
     <div class="container">
         <div class="jumbotron">
-            <div class='card-header'>
-                New York Times Search
-            </div>
+            <div class='card-header'>New York Times Search</div>
             <div class="row">
                 <div class="col-sm-12">
                     <form>
                         <div class="row">
-                            <label for="exampleInputEmail1">
-                                Search Terms
-                            </label>
+                            <label for="exampleInputEmail1">Search Terms</label>
                             <input type="text" class="form-control" id="search-terms" placeholder="Search terms">
                         </div>
                         <div class="row">
-                            <label for="exampleInputPassword1">
-                                Number of Records to Retrive
-                            </label>
+                            <label for="exampleInputPassword1">Number of Records to Retrive</label>
                             <input type="number" class="form-control" id="num-records" placeholder="Maximum: 5">
                         </div>
                         <div class="row">
-                            <label for="exampleInputPassword1">
-                                Start Year (Optional)
-                            </label>
+                            <label for="exampleInputPassword1">Start Year (Optional)</label>
                             <input type="number" class="form-control" id="start-year" placeholder="Example: 1980">
                         </div>
                         <div class="row">
-                            <label for="exampleInputPassword1">
-                                End Year (Optional)
-                            </label>
+                            <label for="exampleInputPassword1">End Year (Optional)</label>
                             <input type="number" class="form-control" id="end-year" placeholder="Example: 2018">
                         </div>
+                        <a class="btn btn-primary btn-lg" href="#" role="button" id="submit-button">Search</a>
+                        <a class="btn btn-primary btn-lg" href="#" role="button">Clear Results</a>
                     </form>
-                </div>
-                <div class="row">
-                    <div class="col-sm-12 justify-content-center">
-                        <a class="btn btn-primary btn-lg" href="#" role="button">
-                            Search
-                        </a>
-                        <a class="btn btn-primary btn-lg" href="#" role="button">
-                            Clear Results
-                        </a>
-                    </div>
                 </div>
             </div>
         </div>
@@ -64,22 +45,8 @@
             <div class="col-sm-12">
                 <div class="jumbotron jumbotron-fluid">
                     <div class="container">
-                        <h1 class="display-4">
-                            Results
-                        </h1>
-                        <p class="lead" id="results"></p>
-                        <p class="lead" id="title">
-
-                        </p>
-                        <p class="lead" id="author">
-
-                        </p>
-                        <p class="lead" id="date">
-
-                        </p>
-                        <p class="class" id="ref">
-
-                        </p>
+                        <h1 class="display-4">Results</h1>
+                        <div class="lead" id="results"></p>
                     </div>
                 </div>
             </div>

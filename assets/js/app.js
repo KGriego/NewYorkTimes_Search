@@ -24,6 +24,35 @@ Top articles displayed below
     reponse.
 */
 
+var $articles = $("#results")
+
+function displayArticles(n, data) {
+    console.log(data);
+
+    for (let i = 0; i < n; i++) {
+        let newDiv = $("<div>").addClass("article");
+        let title = $("<a>").text(data[i].headline.main);
+        let author = $("<p>").text(data[i].byline.original);
+
+        let time = data[i].pub_date;
+        let cutIndex = time.indexOf("T");
+        time = time.slice(0,cutIndex);
+
+        let pubDate = $("<p>").text(time);
+
+        title.attr("href", data[i].web_url);
+        newDiv.append(title);
+        newDiv.append(author);
+        newDiv.append(pubDate);
+        $articles.append(newDiv);
+    }
+
+    // author
+    // article
+    // date 
+
+}
+
 function getData() {
     var query = $("#search-terms").text().trim();
     var beginDate = $("#start-year").val().trim() + "0101";
@@ -63,7 +92,7 @@ function getData() {
                 numArticles = 10;
             }
 
-            // displayArticles(numArticles, data);
+            displayArticles(numArticles, data);
         })
     }
 }
