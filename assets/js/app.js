@@ -60,7 +60,7 @@ function getData() {
 
     var requestedRecs = $("#num-records").val().trim();
 
-    var numPages = (requestedRecs / 10);
+    var numPages = Math.trunc(requestedRecs / 10);
     var remainder = requestedRecs % 10;
 
     if (remainder > 0) {
