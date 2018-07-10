@@ -25,16 +25,20 @@ Top articles displayed below
 */
 
 function getData() {
-    // var query = $("#input-box").text();
-    
-    var query = "uk";
-    var beginDate = "1980" + "0101";
-    var endDate = "2010" + "1231";
+    var query = $("#search-terms").text().trim();
+    var beginDate = $("#start-year").val().trim() + "0101";
+    var endDate = $("#end-year").val().trim() + "1231";
 
-    //var requestedRecs = $("#input-box").text();
-    
-    var numPages = (requestedRecs / 10) + 1;
+    var requestedRecs = $("#num-records").val().trim();
+
+    var numPages = (requestedRecs / 10);
     var remainder = requestedRecs % 10;
+
+    if (remainder > 0) {
+        numPages++;
+    }
+
+    $(".form-control").text("");
 
     for (var pgNum = 1; pgNum <= numPages; pgNum++) {
         var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
@@ -59,13 +63,9 @@ function getData() {
                 numArticles = 10;
             }
 
-            displayArticles(numArticles, data);
+            // displayArticles(numArticles, data);
         })
     }
-}
-
-function clearInputs() {
-// $("#input-box").text("");
 }
 
 $("#submit-button").on("click", getData);
