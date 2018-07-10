@@ -98,3 +98,6 @@ function getData() {
 }
 
 $("#submit-button").on("click", getData);
+$("#clear-button").on("click", function() {
+    $articles.empty();
+});
