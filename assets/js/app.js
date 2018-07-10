@@ -54,7 +54,7 @@ function displayArticles(n, data) {
 }
 
 function getData() {
-    var query = $("#search-terms").text().trim();
+    var query = $("#search-terms").val().trim();
     var beginDate = $("#start-year").val().trim() + "0101";
     var endDate = $("#end-year").val().trim() + "1231";
 
