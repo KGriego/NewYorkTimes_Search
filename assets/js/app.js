@@ -27,7 +27,6 @@ Top articles displayed below
 var $articles = $("#results")
 
 function displayArticles(n, data) {
-    console.log(data);
 
     for (let i = 0; i < n; i++) {
         let newDiv = $("<div>").addClass("article");
@@ -36,7 +35,7 @@ function displayArticles(n, data) {
 
         let time = data[i].pub_date;
         let cutIndex = time.indexOf("T");
-        time = time.slice(0,cutIndex);
+        time = time.slice(0, cutIndex);
 
         let pubDate = $("<p>").text(time);
 
@@ -46,11 +45,6 @@ function displayArticles(n, data) {
         newDiv.append(pubDate);
         $articles.append(newDiv);
     }
-
-    // author
-    // article
-    // date 
-
 }
 
 function getData() {
@@ -70,6 +64,7 @@ function getData() {
     $(".form-control").text("");
 
     for (var pgNum = 1; pgNum <= numPages; pgNum++) {
+        console.log(numPages, pgNum);
         var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
         url += '?' + $.param({
             'api-key': "bc3f94c9ca8842b4b60d371d559cf03e",
@@ -84,20 +79,17 @@ function getData() {
             method: 'GET',
         }).then(function (result) {
             var data = result.response.docs;
-
-            var numArticles = 0;
-            if (pgNum === numPages) {
-                numArticles = remainder;
+            if (requestedRecs >= 10) {
+                displayArticles(10, data);
+                requestedRecs -= 10;
             } else {
-                numArticles = 10;
+                displayArticles(requestedRecs, data);
             }
-
-            displayArticles(numArticles, data);
         })
     }
 }
 
 $("#submit-button").on("click", getData);
-$("#clear-button").on("click", function() {
+$("#clear-button").on("click", function () {
     $articles.empty();
 });
